@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">xLightsCompanionPro</string>
+    <string name="title_home">Home</string>
+    <string name="title_arprops">AR Props</string>
+    <string name="title_tools">Tools</string>
+    <string name="title_search">Search</string>
+</resources>

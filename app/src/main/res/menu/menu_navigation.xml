@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/home"
+        android:title="Home"
+        android:icon="@drawable/ic_home"/>
+
+    <item
+        android:id="@+id/arprops"
+        android:title="AR Props"
+        android:icon="@drawable/ic_arprops"/>
+
+    <item
+        android:id="@+id/tools"
+        android:title="Tools"
+        android:icon="@drawable/ic_tools"/>
+
+    <item
+        android:id="@+id/search"
+        android:title="Search"
+        android:icon="@drawable/ic_search"/>
+
+
+
+</menu>
