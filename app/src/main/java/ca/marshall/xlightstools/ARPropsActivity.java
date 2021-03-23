@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -34,6 +35,8 @@ public class ARPropsActivity extends AppCompatActivity implements View.OnClickLi
     ImageView arch, tree, matrix, star, candycane;
 
     View[] arrayView;
+
+    Boolean objectsHidden;
 
     int selected = 1; // Default arch is chosen
 
@@ -82,6 +85,9 @@ public class ARPropsActivity extends AppCompatActivity implements View.OnClickLi
             }
         });
 
+        // By default, the prop window is showing, therefore they are NOT hidden by default
+        objectsHidden = false;
+
         arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.arFragment);
 
         arch = findViewById(R.id.arch);
@@ -101,7 +107,17 @@ public class ARPropsActivity extends AppCompatActivity implements View.OnClickLi
             anchorNode.setParent(arFragment.getArSceneView().getScene());
             createModel(anchorNode, selected);
         });
+        initializeButtons();
+    }
 
+    private void initializeButtons() {
+        Button showHidePropsButton = findViewById(R.id.show_hide_props_button);
+        showHidePropsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                hideArrayView();
+            }
+        });
     }
 
     private void setUpModel() {
@@ -159,30 +175,30 @@ public class ARPropsActivity extends AppCompatActivity implements View.OnClickLi
 
     private void createModel(AnchorNode anchorNode, int selected) {
         if (selected == 1) {
-            TransformableNode archNode = new TransformableNode(arFragment.getTransformationSystem());
-            archNode.setParent(anchorNode);
-            archNode.setRenderable(archRenderable);
-            archNode.select();
+            TransformableNode node = new TransformableNode(arFragment.getTransformationSystem());
+            node.setParent(anchorNode);
+            node.setRenderable(archRenderable);
+            node.select();
         } else if (selected == 2) {
-            TransformableNode archNode = new TransformableNode(arFragment.getTransformationSystem());
-            archNode.setParent(anchorNode);
-            archNode.setRenderable(treeRenderable);
-            archNode.select();
+            TransformableNode node = new TransformableNode(arFragment.getTransformationSystem());
+            node.setParent(anchorNode);
+            node.setRenderable(treeRenderable);
+            node.select();
         } else if (selected == 3) {
-            TransformableNode archNode = new TransformableNode(arFragment.getTransformationSystem());
-            archNode.setParent(anchorNode);
-            archNode.setRenderable(matrixRenderable);
-            archNode.select();
+            TransformableNode node = new TransformableNode(arFragment.getTransformationSystem());
+            node.setParent(anchorNode);
+            node.setRenderable(matrixRenderable);
+            node.select();
         } else if (selected == 4) {
-            TransformableNode archNode = new TransformableNode(arFragment.getTransformationSystem());
-            archNode.setParent(anchorNode);
-            archNode.setRenderable(starRenderable);
-            archNode.select();
+            TransformableNode node = new TransformableNode(arFragment.getTransformationSystem());
+            node.setParent(anchorNode);
+            node.setRenderable(starRenderable);
+            node.select();
         } else if (selected == 5) {
-            TransformableNode archNode = new TransformableNode(arFragment.getTransformationSystem());
-            archNode.setParent(anchorNode);
-            archNode.setRenderable(candycaneRenderable);
-            archNode.select();
+            TransformableNode node = new TransformableNode(arFragment.getTransformationSystem());
+            node.setParent(anchorNode);
+            node.setRenderable(candycaneRenderable);
+            node.select();
         }
     }
 
@@ -196,7 +212,21 @@ public class ARPropsActivity extends AppCompatActivity implements View.OnClickLi
         arrayView = new View[] {
                 arch, tree, matrix, star, candycane
         };
-        // arch.setVisibility(View.GONE);
+    }
+
+    private void hideArrayView() {
+        if (objectsHidden) {
+            for (View v : arrayView) {
+                v.setVisibility(View.VISIBLE);
+            }
+            objectsHidden = false;
+        } else {
+            for (View v : arrayView) {
+                v.setVisibility(View.GONE);
+            }
+            objectsHidden = true;
+        }
+
     }
 
     @Override

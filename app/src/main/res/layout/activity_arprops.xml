@@ -7,13 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".ARPropsActivity">
 
-    <TextView
+    <Button
+        android:id="@+id/show_hide_props_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="AR Props"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        android:layout_centerInParent="true"/>
+        android:layout_below="@+id/props_scroll_view"
+        android:layout_centerHorizontal="true"
+        android:text="Show/Hide" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
@@ -23,17 +23,20 @@
         app:itemTextColor="@drawable/selector"
         app:itemIconTint="@drawable/selector"
         app:menu="@menu/menu_navigation"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true" >
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     <fragment
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:id="@+id/arFragment"
-        android:name="com.google.ar.sceneform.ux.ArFragment" />
+        android:name="com.google.ar.sceneform.ux.ArFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/props_scroll_view">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -77,5 +80,7 @@
 
         </LinearLayout>
     </HorizontalScrollView>
+
+
 
 </RelativeLayout>
