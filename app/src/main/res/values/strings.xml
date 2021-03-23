@@ -4,4 +4,61 @@
     <string name="title_arprops">AR Props</string>
     <string name="title_tools">Tools</string>
     <string name="title_search">Search</string>
+    <string name="getting_started_n_preview_props_in_ar">Getting Started \n Preview Props in AR</string>
+    <string name="setup_your_lights_n_power_calculator">Setup Your Lights \n Power Calculator</string>
+    <string name="jam_out_n_search_for_songs">Jam Out \n Search For Songs</string>
+    <string name="links">Links</string>
+    <string name="holiday_sequences">
+        <a href="https://www.holidaysequences.com/Holidaysequences-Xlights-Sequences-s/200.htm?fbclid=IwAR20sUgpXCbKGPcocb_LE0Box_11yWQs5BzkhLBf5I_Pbhcr1-v8fqmi_ag">Holiday Sequences</a>
+    </string>
+    <string name="zoom_meeting">
+        <a href="https://us02web.zoom.us/j/175801909">Zoom Meeting</a>
+    </string>
+    <string name="facebook_groups">Facebook Groups</string>
+    <string name="official_xlights_support_group">
+        <a href="https://www.facebook.com/groups/xLights/">Official xLights Support Group</a>
+    </string>
+    <string name="_3d_printing_for_christmas_lights_enthusiasts">
+        <a href="https://www.facebook.com/groups/233383237101011/">3D Printing for Christmas Lights Enthusiasts</a>
+    </string>
+    <string name="european_lighting_fanatics">
+        <a href="https://www.facebook.com/groups/2260596274198602/">European Lighting Fanatics</a>
+    </string>
+    <string name="extreme_lighting_fanatics_of_florida">
+        <a href="https://www.facebook.com/groups/469315706587218/">Extreme Lighting Fanatics of Florida</a>
+    </string>
+    <string name="holiday_lighting_think_tank">
+        <a href="https://www.facebook.com/groups/HolidayThinkTank/">Holiday Lighting Think Tank</a>
+    </string>
+    <string name="holiday_light_show_vendors">
+        <a href="https://www.facebook.com/groups/HolidayLightShowVendors/">Holiday Light Show Vendors</a>
+    </string>
+    <string name="xlights_singing_faces_3">
+        <a href="https://www.facebook.com/groups/353601265519768/">xLights Singing Faces 3</a>
+    </string>
+    <string name="southern_california_christmas_lights_enthusiasts">
+        <a href="https://www.facebook.com/groups/socalchristmas/">Southern California Christmas Lights Enthusiasts</a>
+    </string>
+    <string name="share_your_holiday_ideas_group">
+        <a href="https://www.facebook.com/groups/186301722156865/">Share Your Holiday Ideas Group</a>
+    </string>
+    <string name="pixel_pro_university">
+        <a href="https://www.facebook.com/groups/PixelProU/">Pixel Pro University</a>
+    </string>
+    <string name="pixel2things_boards">
+        <a href="https://www.facebook.com/groups/pixel2things/">Pixel2Things Boards</a>
+    </string>
+    <string name="light_o_rama_sequence_sharers">
+        <a href="https://www.facebook.com/groups/1901299436791951/">Light O Rama Sequence Sharers</a>
+    </string>
+    <string name="facebook_pages">Facebook Pages</string>
+    <string name="pixel_pro_displays">
+        <a href="https://www.facebook.com/pixelprodisplays">Pixel Pro Displays</a>
+    </string>
+    <string name="jdeation_designer">
+        <a href="https://www.facebook.com/jdeation/">Jdeation Designer</a>
+    </string>
+    <string name="holiday_sights_and_sounds">
+        <a href="https://www.facebook.com/HSSUSC/">Holiday Sights and Sounds</a>
+    </string>
 </resources>

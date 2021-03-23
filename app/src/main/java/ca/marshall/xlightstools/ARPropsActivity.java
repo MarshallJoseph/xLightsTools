@@ -196,6 +196,7 @@ public class ARPropsActivity extends AppCompatActivity implements View.OnClickLi
         arrayView = new View[] {
                 arch, tree, matrix, star, candycane
         };
+        // arch.setVisibility(View.GONE);
     }
 
     @Override
