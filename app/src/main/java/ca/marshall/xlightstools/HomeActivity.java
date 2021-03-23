@@ -3,7 +3,9 @@ package ca.marshall.xlightstools;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -59,6 +61,43 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        // Assign on click listeners to each of the home page buttons
+        assignHomeButtons();
+
+
+
+    }
+
+    private void assignHomeButtons() {
+        // Initialize and assign on click listener to props button on home page
+        Button propsButton = findViewById(R.id.props_button);
+        propsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), ARPropsActivity.class));
+                overridePendingTransition(0,0);
+            }
+        });
+
+        // Initialize and assign on click listener to tools button on home page
+        Button toolsButton = findViewById(R.id.tools_button);
+        toolsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), ToolsActivity.class));
+                overridePendingTransition(0,0);
+            }
+        });
+
+        // Initialize and assign on click listener to search button on home page
+        Button searchButton = findViewById(R.id.search_button);
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), SearchActivity.class));
+                overridePendingTransition(0,0);
+            }
+        });
     }
 
 }
