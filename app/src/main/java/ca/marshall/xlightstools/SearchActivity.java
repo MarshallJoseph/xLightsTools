@@ -17,12 +17,10 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -40,41 +38,12 @@ public class SearchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-     btn = (Button)this.findViewById(R.id.goBtn);
-        sv = this.findViewById(R.id.searchView);
 
-
-
-        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                searchInput = query;
-                return true;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                searchInput += newText;
-                return true;
-            }
-        });
-
-
-        btn.setOnClickListener((e) ->makeRestRequest(searchInput));
-         this.adapter = new WebsiteAdapter(this,websiteList);
-        this.lv = (ListView) this.findViewById(R.id.listView);
-        assert lv != null;
-        lv.setAdapter(adapter);
         // Set activity window to fullscreen
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-
-
-
 
         // Hide the action bar
         getSupportActionBar().hide();
@@ -112,6 +81,30 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
+        btn = (Button) this.findViewById(R.id.goBtn);
+        sv = this.findViewById(R.id.searchView);
+
+        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                searchInput = query;
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                searchInput = newText;
+                return true;
+            }
+        });
+
+        btn.setOnClickListener((e) -> makeRestRequest(searchInput));
+
+        this.adapter = new WebsiteAdapter(this, websiteList);
+        this.lv = (ListView) this.findViewById(R.id.listView);
+        assert lv != null;
+        lv.setAdapter(adapter);
+
     }
 
     private void makeRestRequest(String searchInput) {
@@ -138,8 +131,6 @@ public class SearchActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
-
-
             }
         }, new Response.ErrorListener() {
             @Override

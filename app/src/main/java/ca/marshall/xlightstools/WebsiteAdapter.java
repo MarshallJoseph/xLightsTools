@@ -24,7 +24,6 @@ public class WebsiteAdapter extends ArrayAdapter<Website> {
         Website site = getItem(position);
         if (convertView == null){
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.api_listitem,parent,false);
-
         }
 
         TextView textName = (TextView) convertView.findViewById(R.id.apiItemName);
