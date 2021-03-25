@@ -1,6 +1,8 @@
 package ca.marshall.xlightstools;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +32,13 @@ public class WebsiteAdapter extends ArrayAdapter<Website> {
         TextView textUrl = (TextView) convertView.findViewById(R.id.apiItemUrl);
         textName.setText(site.getTitle());
         textUrl.setText(site.getBaseUrl());
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent openWebSite = new Intent(Intent.ACTION_VIEW, Uri.parse(site.getUrl()));
+                getContext().startActivity(openWebSite);
+            }
+        });
         return convertView;
     }
 }
