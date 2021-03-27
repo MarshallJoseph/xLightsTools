@@ -21,6 +21,7 @@ import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -122,15 +123,19 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 Log.d("JSON","OnResponse" + response);
-                for (int i = 0; i < response.length(); i++) {
                     try {
-                        JSONObject site = response.getJSONArray("results").getJSONObject(i);
-                        Website website = new Website(site.getString("title"),site.getString("url"),site.getString("baseUrl"));
-                        websiteList.add(website);
+
+                        JSONArray site = response.getJSONArray("results"); // always the first response
+                        for (int i = 0; i < site.length(); i++) {
+                           JSONObject siteObj = (JSONObject) site.get(i);
+                       Website website = new Website(siteObj.getString("title"),siteObj.getString("url"),siteObj.getString("baseUrl"));
+                       websiteList.add(website);
+                        }
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                }
+
             }
         }, new Response.ErrorListener() {
             @Override
