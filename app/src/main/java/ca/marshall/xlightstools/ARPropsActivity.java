@@ -1,18 +1,22 @@
 package ca.marshall.xlightstools;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.media.CamcorderProfile;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
@@ -25,6 +29,7 @@ import com.google.ar.sceneform.ux.TransformableNode;
 public class ARPropsActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ArFragment arFragment;
+    private VideoRecorder videoRecorder;
 
     private ModelRenderable archRenderable,
                             treeRenderable,
@@ -39,6 +44,8 @@ public class ARPropsActivity extends AppCompatActivity implements View.OnClickLi
     Boolean objectsHidden;
 
     int selected = 1; // Default arch is chosen
+    int activity = 1;
+    int numObjects = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,35 +62,65 @@ public class ARPropsActivity extends AppCompatActivity implements View.OnClickLi
         // Initialize and assign variables
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-        // Set home selected
+        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
+        alertBuilder
+                .setMessage("Switching activities will result in losing your current AR Props scene.")
+                .setCancelable(false)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if (activity == 0) {
+                            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                        } else if (activity == 2) {
+                            startActivity(new Intent(getApplicationContext(), ToolsActivity.class));
+                        } else if (activity == 3) {
+                            startActivity(new Intent(getApplicationContext(), SearchActivity.class));
+                        }
+                        finish();
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        bottomNavigationView.setSelectedItemId(R.id.arprops);
+                        dialogInterface.cancel();
+                    }
+                });
+        AlertDialog alert = alertBuilder.create();
+        alert.setTitle("Are you sure?");
+
+        // Set arprops selected
         bottomNavigationView.setSelectedItemId(R.id.arprops);
 
         // Make sure label always shows
         bottomNavigationView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
 
         // Perform ItemSelectedListener
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
-                    case R.id.home:
+        bottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
+            if (numObjects > 0)
+                alert.show();
+            switch (menuItem.getItemId()) {
+                case R.id.home:
+                    activity = 0;
+                    if (numObjects == 0)
                         startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.arprops:
-                        return true;
-                    case R.id.tools:
+                    return true;
+                case R.id.arprops:
+                    activity = 1;
+                    return true;
+                case R.id.tools:
+                    activity = 2;
+                    if (numObjects == 0)
                         startActivity(new Intent(getApplicationContext(), ToolsActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.search:
+                    return true;
+                case R.id.search:
+                    activity = 3;
+                    if (numObjects == 0)
                         startActivity(new Intent(getApplicationContext(), SearchActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
+                    return true;
                 }
-                return false;
-            }
-        });
+            return false;
+            });
 
         // By default, the prop window is showing, therefore they are NOT hidden by default
         objectsHidden = false;
@@ -111,13 +148,72 @@ public class ARPropsActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void initializeButtons() {
+        // Button for showing and hiding the horizontal props view
         Button showHidePropsButton = findViewById(R.id.show_hide_props_button);
         showHidePropsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                hideArrayView();
+                if (objectsHidden) {
+                    for (View v : arrayView) {
+                        v.setVisibility(View.VISIBLE);
+                        showHidePropsButton.setText("Hide Props");
+                    }
+                    objectsHidden = false;
+                } else {
+                    for (View v : arrayView) {
+                        v.setVisibility(View.GONE);
+                        showHidePropsButton.setText("Show Props");
+                    }
+                    objectsHidden = true;
+                }
             }
         });
+        // Button for recording the screen
+        Button recordVideoButton = findViewById(R.id.record_button);
+        recordVideoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (videoRecorder == null) {
+                    videoRecorder = new VideoRecorder();
+                    videoRecorder.setSceneView(arFragment.getArSceneView());
+                    int orientation = getResources().getConfiguration().orientation;
+                    videoRecorder.setVideoQuality(CamcorderProfile.QUALITY_HIGH, orientation);
+                }
+                boolean isRecording = videoRecorder.onToggleRecord();
+                if (isRecording) {
+                    recordVideoButton.setText("Stop Recording");
+                    for (View v : arrayView) {
+                        v.setVisibility(View.GONE);
+                        showHidePropsButton.setText("Show Window");
+                    }
+                    objectsHidden = true;
+                    Toast.makeText(view.getContext(), "Started Recording", Toast.LENGTH_SHORT).show();
+                } else {
+                    recordVideoButton.setText("Start Recording");
+                    for (View v : arrayView) {
+                        v.setVisibility(View.VISIBLE);
+                        showHidePropsButton.setText("Hide Window");
+                    }
+                    objectsHidden = false;
+                    Toast.makeText(view.getContext(), "Recording Stopped", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        Button clearPropsButton = findViewById(R.id.clear_props_button);
+        clearPropsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), ARPropsActivity.class));
+            }
+        });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        // Check to make sure the write to external storage permission is active
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
     }
 
     private void setUpModel() {
@@ -179,26 +275,31 @@ public class ARPropsActivity extends AppCompatActivity implements View.OnClickLi
             node.setParent(anchorNode);
             node.setRenderable(archRenderable);
             node.select();
+            numObjects++;
         } else if (selected == 2) {
             TransformableNode node = new TransformableNode(arFragment.getTransformationSystem());
             node.setParent(anchorNode);
             node.setRenderable(treeRenderable);
             node.select();
+            numObjects++;
         } else if (selected == 3) {
             TransformableNode node = new TransformableNode(arFragment.getTransformationSystem());
             node.setParent(anchorNode);
             node.setRenderable(matrixRenderable);
             node.select();
+            numObjects++;
         } else if (selected == 4) {
             TransformableNode node = new TransformableNode(arFragment.getTransformationSystem());
             node.setParent(anchorNode);
             node.setRenderable(starRenderable);
             node.select();
+            numObjects++;
         } else if (selected == 5) {
             TransformableNode node = new TransformableNode(arFragment.getTransformationSystem());
             node.setParent(anchorNode);
             node.setRenderable(candycaneRenderable);
             node.select();
+            numObjects++;
         }
     }
 
@@ -212,21 +313,6 @@ public class ARPropsActivity extends AppCompatActivity implements View.OnClickLi
         arrayView = new View[] {
                 arch, tree, matrix, star, candycane
         };
-    }
-
-    private void hideArrayView() {
-        if (objectsHidden) {
-            for (View v : arrayView) {
-                v.setVisibility(View.VISIBLE);
-            }
-            objectsHidden = false;
-        } else {
-            for (View v : arrayView) {
-                v.setVisibility(View.GONE);
-            }
-            objectsHidden = true;
-        }
-
     }
 
     @Override

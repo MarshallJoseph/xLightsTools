@@ -67,10 +67,16 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/xlights_website_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="@string/xlights_website" />
+
+            <TextView
                 android:id="@+id/holiday_sequences_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:linksClickable="false"
                 android:padding="5dp"
                 android:text="@string/holiday_sequences" />
 

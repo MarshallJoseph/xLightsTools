@@ -105,6 +105,10 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void assignClickableLinks() {
+        // Official xLights Website Hyperlink
+        TextView xLightsWebsiteText = findViewById(R.id.xlights_website_text);
+        xLightsWebsiteText.setMovementMethod(LinkMovementMethod.getInstance());
+
         // Holiday Sequences Hyperlink
         TextView holidaySequencesText = findViewById(R.id.holiday_sequences_text);
         holidaySequencesText.setMovementMethod(LinkMovementMethod.getInstance());
