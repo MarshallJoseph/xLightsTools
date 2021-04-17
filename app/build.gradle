@@ -42,25 +42,67 @@ dependencies {
 }
 
 
+
 sceneform.asset('sampledata/Arch.obj',
         'default',
         'sampledata/Arch.sfa',
         'src/main/assets/Arch')
 
-sceneform.asset('sampledata/CandyCane.obj',
+sceneform.asset('sampledata/Candy Cane.obj',
         'default',
-        'sampledata/CandyCane.sfa',
-        'src/main/assets/CandyCane')
+        'sampledata/Candy Cane.sfa',
+        'src/main/assets/Candy Cane')
+
+sceneform.asset('sampledata/Circle Boarder.obj',
+        'default',
+        'sampledata/Circle Boarder.sfa',
+        'src/main/assets/Circle Boarder')
 
 sceneform.asset('sampledata/Matrix.obj',
         'default',
         'sampledata/Matrix.sfa',
         'src/main/assets/Matrix')
 
+sceneform.asset('sampledata/Mega Tree.obj',
+        'default',
+        'sampledata/Mega Tree.sfa',
+        'src/main/assets/Mega Tree')
+
+sceneform.asset('sampledata/MiniTree.obj',
+        'default',
+        'sampledata/MiniTree.sfa',
+        'src/main/assets/MiniTree')
+
+sceneform.asset('sampledata/Pipe.obj',
+        'default',
+        'sampledata/Pipe.sfa',
+        'src/main/assets/Pipe')
+
+sceneform.asset('sampledata/Present.obj',
+        'default',
+        'sampledata/Present.sfa',
+        'src/main/assets/Present')
+
+sceneform.asset('sampledata/Snow Flake.obj',
+        'default',
+        'sampledata/Snow Flake.sfa',
+        'src/main/assets/Snow Flake')
+
+sceneform.asset('sampledata/Sphere.obj',
+        'default',
+        'sampledata/Sphere.sfa',
+        'src/main/assets/Sphere')
+
 sceneform.asset('sampledata/Spiral Tree.obj',
         'default',
         'sampledata/Spiral Tree.sfa',
         'src/main/assets/Spiral Tree')
+
+sceneform.asset('sampledata/Square Border.obj',
+        'default',
+        'sampledata/Square Border.sfa',
+        'src/main/assets/Square Border')
+
 
 sceneform.asset('sampledata/Star.obj',
         'default',
