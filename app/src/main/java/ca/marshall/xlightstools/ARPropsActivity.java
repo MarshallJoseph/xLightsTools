@@ -62,8 +62,8 @@ public class ARPropsActivity extends AppCompatActivity implements View.OnClickLi
         // Initialize and assign variables
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
-        alertBuilder
+        AlertDialog.Builder switchActivitiesAlertBuilder = new AlertDialog.Builder(this);
+        switchActivitiesAlertBuilder
                 .setMessage("Switching activities will result in losing your current AR Props scene.")
                 .setCancelable(false)
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
@@ -86,8 +86,8 @@ public class ARPropsActivity extends AppCompatActivity implements View.OnClickLi
                         dialogInterface.cancel();
                     }
                 });
-        AlertDialog alert = alertBuilder.create();
-        alert.setTitle("Are you sure?");
+        AlertDialog switchActivitiesAlert = switchActivitiesAlertBuilder.create();
+        switchActivitiesAlert.setTitle("Are you sure?");
 
         // Set arprops selected
         bottomNavigationView.setSelectedItemId(R.id.arprops);
@@ -98,7 +98,7 @@ public class ARPropsActivity extends AppCompatActivity implements View.OnClickLi
         // Perform ItemSelectedListener
         bottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
             if (numObjects > 0)
-                alert.show();
+                switchActivitiesAlert.show();
             switch (menuItem.getItemId()) {
                 case R.id.home:
                     activity = 0;
@@ -156,13 +156,13 @@ public class ARPropsActivity extends AppCompatActivity implements View.OnClickLi
                 if (objectsHidden) {
                     for (View v : arrayView) {
                         v.setVisibility(View.VISIBLE);
-                        showHidePropsButton.setText("Hide Props");
+                        showHidePropsButton.setText("Hide Window");
                     }
                     objectsHidden = false;
                 } else {
                     for (View v : arrayView) {
                         v.setVisibility(View.GONE);
-                        showHidePropsButton.setText("Show Props");
+                        showHidePropsButton.setText("Show Window");
                     }
                     objectsHidden = true;
                 }
@@ -187,7 +187,7 @@ public class ARPropsActivity extends AppCompatActivity implements View.OnClickLi
                         showHidePropsButton.setText("Show Window");
                     }
                     objectsHidden = true;
-                    Toast.makeText(view.getContext(), "Started Recording", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(view.getContext(), "Started recording", Toast.LENGTH_SHORT).show();
                 } else {
                     recordVideoButton.setText("Start Recording");
                     for (View v : arrayView) {
@@ -195,15 +195,36 @@ public class ARPropsActivity extends AppCompatActivity implements View.OnClickLi
                         showHidePropsButton.setText("Hide Window");
                     }
                     objectsHidden = false;
-                    Toast.makeText(view.getContext(), "Recording Stopped", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(view.getContext(), "Stopped recording, video saved to device", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
+        AlertDialog.Builder clearPropsAlertBuilder = new AlertDialog.Builder(this);
+        clearPropsAlertBuilder
+                .setMessage("Clearing props will result in losing your current AR Props scene.")
+                .setCancelable(false)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        startActivity(new Intent(getApplicationContext(), ARPropsActivity.class));
+                        finish();
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+        AlertDialog clearPropsAlert = clearPropsAlertBuilder.create();
+        clearPropsAlert.setTitle("Are you sure?");
+
         Button clearPropsButton = findViewById(R.id.clear_props_button);
         clearPropsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), ARPropsActivity.class));
+                clearPropsAlert.show();
             }
         });
     }
