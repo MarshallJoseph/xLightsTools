@@ -11,6 +11,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -96,6 +97,8 @@ public class SearchActivity extends AppCompatActivity {
         sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                searchInput = sv.getQuery().toString();
+                makeRestRequest(searchInput);
                 return false;
             }
 
@@ -105,7 +108,6 @@ public class SearchActivity extends AppCompatActivity {
                 return false;
             }
         });
-
         btn.setOnClickListener((e) -> makeRestRequest(searchInput));
 
     }
@@ -123,6 +125,8 @@ public class SearchActivity extends AppCompatActivity {
 
     private void makeRestRequest(String searchInput) {
 
+        TextView noResultsText = findViewById(R.id.noresults_text);
+        noResultsText.setVisibility(View.INVISIBLE);
         hideKeyboard(this);
 
         assert searchInput != null;
@@ -141,18 +145,19 @@ public class SearchActivity extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 Log.d("JSON","OnResponse" + response);
                     try {
-
                         JSONArray site = response.getJSONArray("results"); // always the first response
-                        for (int i = 0; i < site.length(); i++) {
-                           JSONObject siteObj = (JSONObject) site.get(i);
-                           Website website = new Website(siteObj.getString("title"),siteObj.getString("url"),siteObj.getString("baseUrl"));
-                           adapter.add(website);
+                        if (site.length() > 0) {
+                            for (int i = 0; i < site.length(); i++) {
+                                JSONObject siteObj = (JSONObject) site.get(i);
+                                Website website = new Website(siteObj.getString("title"),siteObj.getString("url"),siteObj.getString("baseUrl"));
+                                adapter.add(website);
+                            }
+                        } else {
+                            noResultsText.setVisibility(View.VISIBLE);
                         }
-
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-
             }
         }, new Response.ErrorListener() {
             @Override
