@@ -42,7 +42,6 @@ dependencies {
 }
 
 
-
 sceneform.asset('sampledata/Arch.obj',
         'default',
         'sampledata/Arch.sfa',

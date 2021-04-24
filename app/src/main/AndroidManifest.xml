@@ -4,8 +4,8 @@
     package="ca.marshall.xlightstools">
 
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <uses-feature
         android:name="android.hardware.camera.ar"
@@ -19,6 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".PowerCalculator"></activity>
+        <activity android:name=".TreeCalculator" />
+        <activity android:name=".PropsOrganizer" />
         <activity android:name=".ARPropsActivity" />
         <activity android:name=".ToolsActivity" />
         <activity android:name=".SearchActivity" />
@@ -31,7 +34,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
 
         <meta-data
             android:name="com.google.ar.core"

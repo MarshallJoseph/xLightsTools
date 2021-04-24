@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ToolsActivity">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <TextView
         android:id="@+id/tools_title"
@@ -22,16 +22,46 @@
         android:shadowDy="5"
         android:shadowRadius="20"
         android:textColor="@android:color/white"
+        app:layout_constraintTop_toTopOf="parent"
         android:textSize="40sp"
         android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="wrap_content"
+
+
+    <Button
+        android:id="@+id/tree_calculator_button"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tools"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        android:layout_centerInParent="true"/>
+        android:text="Tree Lights Calculator"
+        android:textColor="#65c466"
+        android:layout_marginHorizontal="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/power_calculator_button"
+        app:layout_constraintTop_toBottomOf="@+id/tools_title"
+        tools:layout_editor_absoluteX="10dp" />
+
+    <Button
+        android:id="@+id/power_calculator_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Power Calculator"
+        android:textColor="#F7CE45"
+        android:layout_marginHorizontal="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/props_organizer"
+        app:layout_constraintTop_toBottomOf="@+id/tree_calculator_button"
+        tools:layout_editor_absoluteX="10dp" />
+
+    <Button
+        android:id="@+id/props_organizer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Props Organizer"
+        android:textColor="#3478f6"
+        android:layout_marginHorizontal="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/power_calculator_button"
+        tools:layout_editor_absoluteX="10dp" />
+
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
@@ -41,6 +71,7 @@
         app:itemTextColor="@drawable/selector"
         app:itemIconTint="@drawable/selector"
         app:menu="@menu/menu_navigation"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_alignParentBottom="true" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
