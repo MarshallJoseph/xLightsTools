@@ -1,14 +1,14 @@
 package ca.marshall.xlightstools;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
@@ -59,10 +59,8 @@ public class ToolsActivity extends AppCompatActivity {
                 return false;
             }
         });
-
         // Assign on click listeners to each of the Tool page buttons
         assignToolButtons();
-
     }
 
     private void assignToolButtons() {
@@ -72,7 +70,7 @@ public class ToolsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), TreeCalculator.class));
-                overridePendingTransition(0,0);
+                //overridePendingTransition(0,0);
             }
         });
 
@@ -82,7 +80,7 @@ public class ToolsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), PowerCalculator.class));
-                overridePendingTransition(0,0);
+                //overridePendingTransition(0,0);
             }
         });
 
@@ -92,7 +90,7 @@ public class ToolsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), PropsOrganizer.class));
-                overridePendingTransition(0,0);
+                //overridePendingTransition(0,0);
             }
         });
     }

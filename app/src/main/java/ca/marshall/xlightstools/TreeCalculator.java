@@ -1,13 +1,12 @@
 package ca.marshall.xlightstools;
 
-import androidx.appcompat.app.AppCompatActivity;
-import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class TreeCalculator extends AppCompatActivity {
 
@@ -24,8 +23,6 @@ public class TreeCalculator extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tree_calculator);
-
-
 
         //Check if we can update the function once they are done entering values
         Height.addTextChangedListener(new TextWatcher() {
