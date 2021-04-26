@@ -11,19 +11,28 @@ import android.os.Bundle;
 
 public class TreeCalculator extends AppCompatActivity {
 
-    EditText Height = (EditText) findViewById(R.id.editText6);
-    EditText TopDia = (EditText) findViewById(R.id.editText3);
-    EditText BotDia = (EditText) findViewById(R.id.botdiin);
-    EditText CircCovered = (EditText) findViewById(R.id.circov);
-    EditText SpaceToTop = (EditText) findViewById(R.id.sttl);
-    EditText SpaceAfterBot = (EditText) findViewById(R.id.sabl);
-    EditText SpaceBetween = (EditText) findViewById(R.id.sbl);
-    EditText NumOfStrings = (EditText) findViewById(R.id.nos);
+    EditText Height;// = (EditText) findViewById(R.id.editText6);
+    EditText TopDia;// = (EditText) findViewById(R.id.editText3);
+    EditText BotDia;// = (EditText) findViewById(R.id.botdiin);
+    EditText CircCovered;// = (EditText) findViewById(R.id.circov);
+    EditText SpaceToTop;// = (EditText) findViewById(R.id.sttl);
+    EditText SpaceAfterBot;// = (EditText) findViewById(R.id.sabl);
+    EditText SpaceBetween;// = (EditText) findViewById(R.id.sbl);
+    EditText NumOfStrings;// = (EditText) findViewById(R.id.nos);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tree_calculator);
+
+        Height = (EditText) findViewById(R.id.editText6);
+        TopDia = (EditText) findViewById(R.id.editText3);
+        BotDia = (EditText) findViewById(R.id.botdiin);
+        CircCovered = (EditText) findViewById(R.id.circov);
+        SpaceToTop = (EditText) findViewById(R.id.sttl);
+        SpaceAfterBot = (EditText) findViewById(R.id.sabl);
+        SpaceBetween = (EditText) findViewById(R.id.sbl);
+        NumOfStrings = (EditText) findViewById(R.id.nos);
 
 
 
