@@ -62,7 +62,7 @@ public class SearchActivity extends AppCompatActivity {
         // Make sure label always shows
         bottomNavigationView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
 
-        // Perform ItemSelectedListener
+        // Perform ItemSelectedListener`
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
