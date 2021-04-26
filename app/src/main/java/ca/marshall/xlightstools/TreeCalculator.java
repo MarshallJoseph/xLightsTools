@@ -1,14 +1,14 @@
 package ca.marshall.xlightstools;
 
-import androidx.appcompat.app.AppCompatActivity;
-import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class TreeCalculator extends AppCompatActivity {
 
@@ -26,6 +26,16 @@ public class TreeCalculator extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tree_calculator);
 
+        // Set activity window to fullscreen
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        //dont show keyboard on start
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
+        // Hide the action bar
+        getSupportActionBar().hide();
+
         Height = (EditText) findViewById(R.id.editText6);
         TopDia = (EditText) findViewById(R.id.editText3);
         BotDia = (EditText) findViewById(R.id.botdiin);
@@ -34,8 +44,6 @@ public class TreeCalculator extends AppCompatActivity {
         SpaceAfterBot = (EditText) findViewById(R.id.sabl);
         SpaceBetween = (EditText) findViewById(R.id.sbl);
         NumOfStrings = (EditText) findViewById(R.id.nos);
-
-
 
         //Check if we can update the function once they are done entering values
         Height.addTextChangedListener(new TextWatcher() {
