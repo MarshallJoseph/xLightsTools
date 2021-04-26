@@ -15,17 +15,17 @@
         app:layout_constraintLeft_toLeftOf="parent"/>
 
     <Button
-        android:id="@+id/addProp"
+        android:id="@+id/addItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Prop"
+        android:text="Add Item"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/RemoveProp"/>
+        app:layout_constraintRight_toLeftOf="@id/removeItem"/>
     <Button
-        android:id="@+id/RemoveProp"
+        android:id="@+id/removeItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Prop"
+        android:text="Remove Item"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
 
@@ -40,15 +40,16 @@
         android:textColor="#000000"
         android:textSize="32dp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/addProp"
+        app:layout_constraintTop_toBottomOf="@id/addItem"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <GridView
         android:id="@+id/grid"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:numColumns="2"
+        android:layout_height="704dp"
+        android:numColumns="auto_fit"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title" />
 
