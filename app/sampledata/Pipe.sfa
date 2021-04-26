@@ -1,7 +1,7 @@
 {
   materials: [
     {
-      name: 'Material',
+      name: 'Pipe.mtl',
       parameters: [
         {
           baseColor: 'Rainbow',
@@ -18,7 +18,7 @@
           metallic: 1,
         },
         {
-          roughness: 0.093865000000000004,
+          roughness: 1,
         },
         {
           opacity: null,
@@ -40,7 +40,7 @@
   },
   samplers: [
     {
-      file: 'sampledata/Rainbow.jpg',
+      file: 'sampledata\\Rainbow.jpg',
       name: 'Rainbow',
       pipeline_name: 'Rainbow.jpg',
     },

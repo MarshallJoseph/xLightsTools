@@ -1,13 +1,11 @@
 package ca.marshall.xlightstools;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class PowerCalculator extends AppCompatActivity {
 
@@ -32,7 +30,7 @@ public class PowerCalculator extends AppCompatActivity {
         // Hide the action bar
         getSupportActionBar().hide();
 
-
+        /*
         toReturn = (Button) findViewById(R.id.button);
         // Initialize and assign on click listener to search button on home page
         toReturn.setOnClickListener(new View.OnClickListener() {
@@ -42,6 +40,8 @@ public class PowerCalculator extends AppCompatActivity {
                 overridePendingTransition(0,0);
             }
         });
+        */
+
 
 
 
