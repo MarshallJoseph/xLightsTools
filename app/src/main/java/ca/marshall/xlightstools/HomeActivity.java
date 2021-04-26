@@ -105,6 +105,11 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void assignClickableLinks() {
+
+        TextView freeSong = findViewById(R.id.freeSong);
+        freeSong.setMovementMethod(LinkMovementMethod.getInstance());
+        TextViewUtils.stripUnderlines(freeSong); // remove underline from hyperlink
+
         // Official xLights Website Hyperlink
         TextView xLightsWebsiteText = findViewById(R.id.xlights_website_text);
         xLightsWebsiteText.setMovementMethod(LinkMovementMethod.getInstance());
