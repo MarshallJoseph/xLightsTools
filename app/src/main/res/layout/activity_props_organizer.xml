@@ -7,19 +7,50 @@
     tools:context=".PropsOrganizer">
 
     <Button
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Return"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <Button
         android:id="@+id/addProp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Add Prop"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+        app:layout_constraintRight_toLeftOf="@id/RemoveProp"/>
+    <Button
+        android:id="@+id/RemoveProp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Prop"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="35dp"
+        android:text="Prop Organizer"
+        android:textColor="#000000"
+        android:textSize="32dp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/addProp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <GridView
         android:id="@+id/grid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/addProp"
+        android:numColumns="2"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:numColumns="2"/>
+        app:layout_constraintTop_toBottomOf="@id/title" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

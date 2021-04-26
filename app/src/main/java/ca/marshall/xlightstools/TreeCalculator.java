@@ -1,28 +1,40 @@
 package ca.marshall.xlightstools;
 
+import androidx.appcompat.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
 
 public class TreeCalculator extends AppCompatActivity {
 
-    EditText Height = (EditText) findViewById(R.id.editText6);
-    EditText TopDia = (EditText) findViewById(R.id.editText3);
-    EditText BotDia = (EditText) findViewById(R.id.botdiin);
-    EditText CircCovered = (EditText) findViewById(R.id.circov);
-    EditText SpaceToTop = (EditText) findViewById(R.id.sttl);
-    EditText SpaceAfterBot = (EditText) findViewById(R.id.sabl);
-    EditText SpaceBetween = (EditText) findViewById(R.id.sbl);
-    EditText NumOfStrings = (EditText) findViewById(R.id.nos);
+    EditText Height;
+    EditText TopDia;
+    EditText BotDia;
+    EditText CircCovered;
+    EditText SpaceToTop;
+    EditText SpaceAfterBot;
+    EditText SpaceBetween;
+    EditText NumOfStrings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tree_calculator);
+
+        Height = (EditText) findViewById(R.id.editText6);
+        TopDia = (EditText) findViewById(R.id.editText3);
+        BotDia = (EditText) findViewById(R.id.botdiin);
+        CircCovered = (EditText) findViewById(R.id.circov);
+        SpaceToTop = (EditText) findViewById(R.id.sttl);
+        SpaceAfterBot = (EditText) findViewById(R.id.sabl);
+        SpaceBetween = (EditText) findViewById(R.id.sbl);
+        NumOfStrings = (EditText) findViewById(R.id.nos);
+
+
 
         //Check if we can update the function once they are done entering values
         Height.addTextChangedListener(new TextWatcher() {
@@ -119,6 +131,40 @@ public class TreeCalculator extends AppCompatActivity {
 
 
     }
+
+
+    private double topSpacing(){
+
+        if (!isEmpty(this.TopDia) && (!isEmpty(this.NumOfStrings)) && (!isEmpty(this.CircCovered))){
+            return  (Double.parseDouble(String.valueOf(this.TopDia))* Double.parseDouble(String.valueOf(this.CircCovered))) / Double.parseDouble(String.valueOf(this.NumOfStrings));
+        }
+
+
+        return 0;
+    }
+
+
+    private double bottomSpacing(){
+
+        if (!isEmpty(this.BotDia) && (!isEmpty(this.NumOfStrings)) && (!isEmpty(this.CircCovered))){
+            return  (Double.parseDouble(String.valueOf(this.BotDia))* Double.parseDouble(String.valueOf(this.CircCovered))) / Double.parseDouble(String.valueOf(this.NumOfStrings));
+        }
+
+
+        return 0;
+    }
+
+
+    private double amps(){
+
+        if (!isEmpty(this.BotDia) && (!isEmpty(this.NumOfStrings)) && (!isEmpty(this.CircCovered))){
+            return  (Double.parseDouble(String.valueOf(this.BotDia))* Double.parseDouble(String.valueOf(this.CircCovered))) / Double.parseDouble(String.valueOf(this.NumOfStrings));
+        }
+
+
+        return 0;
+    }
+
 
     private boolean isEmpty(EditText etText) {
         if (etText.getText().toString().trim().length() > 0)
