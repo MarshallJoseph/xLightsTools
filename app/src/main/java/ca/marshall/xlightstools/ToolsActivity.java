@@ -31,7 +31,6 @@ public class ToolsActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         // Set home selected
-        bottomNavigationView.setSelectedItemId(R.id.tools);
 
         // Make sure label always shows
         bottomNavigationView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
@@ -48,8 +47,6 @@ public class ToolsActivity extends AppCompatActivity {
                     case R.id.arprops:
                         startActivity(new Intent(getApplicationContext(), ARPropsActivity.class));
                         overridePendingTransition(0,0);
-                        return true;
-                    case R.id.tools:
                         return true;
                     case R.id.search:
                         startActivity(new Intent(getApplicationContext(), SearchActivity.class));

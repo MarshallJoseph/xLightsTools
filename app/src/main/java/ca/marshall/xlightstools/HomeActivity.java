@@ -50,10 +50,6 @@ public class HomeActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), ARPropsActivity.class));
                         overridePendingTransition(0,0);
                         return true;
-                    case R.id.tools:
-                        startActivity(new Intent(getApplicationContext(), ToolsActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
                     case R.id.search:
                         startActivity(new Intent(getApplicationContext(), SearchActivity.class));
                         overridePendingTransition(0,0);
@@ -84,14 +80,14 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         // Initialize and assign on click listener to tools button on home page
-        Button toolsButton = findViewById(R.id.tools_button);
-        toolsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), ToolsActivity.class));
-                overridePendingTransition(0,0);
-            }
-        });
+        //Button toolsButton = findViewById(R.id.tools_button);
+        //toolsButton.setOnClickListener(new View.OnClickListener() {
+        //    @Override
+        //    public void onClick(View view) {
+        //        startActivity(new Intent(getApplicationContext(), ToolsActivity.class));
+        //        overridePendingTransition(0,0);
+        //    }
+        //});
 
         // Initialize and assign on click listener to search button on home page
         Button searchButton = findViewById(R.id.search_button);

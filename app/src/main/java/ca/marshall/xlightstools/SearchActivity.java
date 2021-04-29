@@ -75,10 +75,6 @@ public class SearchActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), ARPropsActivity.class));
                         overridePendingTransition(0,0);
                         return true;
-                    case R.id.tools:
-                        startActivity(new Intent(getApplicationContext(), ToolsActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
                     case R.id.search:
                         return true;
                 }

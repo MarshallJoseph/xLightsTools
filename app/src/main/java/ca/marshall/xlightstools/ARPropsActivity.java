@@ -79,8 +79,6 @@ public class ARPropsActivity extends AppCompatActivity implements View.OnClickLi
                         if (activity == 0) {
                             startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                         } else if (activity == 2) {
-                            startActivity(new Intent(getApplicationContext(), ToolsActivity.class));
-                        } else if (activity == 3) {
                             startActivity(new Intent(getApplicationContext(), SearchActivity.class));
                         }
                         finish();
@@ -114,11 +112,6 @@ public class ARPropsActivity extends AppCompatActivity implements View.OnClickLi
                     return true;
                 case R.id.arprops:
                     activity = 1;
-                    return true;
-                case R.id.tools:
-                    activity = 2;
-                    if (numObjects == 0)
-                        startActivity(new Intent(getApplicationContext(), ToolsActivity.class));
                     return true;
                 case R.id.search:
                     activity = 3;

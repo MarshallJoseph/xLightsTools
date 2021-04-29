@@ -12,10 +12,6 @@
         android:title="AR Props"
         android:icon="@drawable/ic_arprops"/>
 
-    <item
-        android:id="@+id/tools"
-        android:title="Tools"
-        android:icon="@drawable/ic_tools"/>
 
     <item
         android:id="@+id/search"

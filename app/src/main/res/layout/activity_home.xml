@@ -58,25 +58,6 @@
                 android:textSize="25sp" />
 
             <Button
-                android:id="@+id/tools_button"
-                android:layout_width="match_parent"
-                android:layout_height="160dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/button_2"
-                android:fontFamily="@font/roboto"
-                android:shadowColor="@android:color/black"
-                android:shadowDx="5"
-                android:shadowDy="5"
-                android:shadowRadius="20"
-                android:text="@string/setup_your_lights_n_power_calculator"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF"
-                android:textSize="25sp" />
-
-            <Button
                 android:id="@+id/search_button"
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
